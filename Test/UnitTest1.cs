@@ -157,7 +157,7 @@ namespace Test
         //    MyLinkedList<ClubMember> list = new MyLinkedList<ClubMember>();
         //    list.Append(3);
         //    list.Append("Hello World"); Vi får fejl fordi vores liste er sat til at indeholde typen ClubMember, og kan derfor ikke tage typer som int, string og double
-        //    list.Append(p5); Siden p5 er af typen ClubMember fejler den ikke
+        //    list.Append(p5); //Siden p5 er af typen ClubMember fejler den ikke
         //    list.Append(0.256);
 
         //    Assert.AreEqual(3, list.First);
