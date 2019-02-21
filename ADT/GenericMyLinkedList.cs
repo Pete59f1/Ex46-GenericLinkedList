@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ADT
 {
-    public class MyLinkedList<T>
+    public class MyLinkedList<T>: IEnumerable
     {
         // Insert code from MyLinkedList here ... 
 
@@ -139,6 +140,66 @@ namespace ADT
                 pointernode = pointernode.Next;
             }
             return result;
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            return new MyLinkedListEnumerator(head);
+        }
+
+        private class MyLinkedListEnumerator : IEnumerator
+        {
+            private Node _head;
+            private Node temp;
+            private Node reset;
+
+            public MyLinkedListEnumerator(Node head)
+            {
+                temp = null;
+                _head = head;
+                reset = head;
+            }
+            public T Current
+            {
+                get
+                {
+                    if (temp == null)
+                    {
+                        return default(T);
+                    }
+                    else
+                    {
+                        return temp.Data;
+                    }
+                }
+            }
+
+            object IEnumerator.Current => Current;
+
+            public bool MoveNext()
+            {
+                if (temp == null)
+                {
+                    temp = _head;
+                }
+                else
+                {
+                    temp = temp.Next;
+                }
+                if (temp == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+
+            }
+            public void Reset()
+            {
+                _head = reset;
+            }
         }
     }
 }
