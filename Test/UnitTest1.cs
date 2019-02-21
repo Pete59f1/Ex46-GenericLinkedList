@@ -235,5 +235,32 @@ namespace Test
             Assert.AreEqual(2.7182m, listDecimal.ItemAt(2));
             Assert.AreEqual(1.6180m, listDecimal.ItemAt(3));
         }
+        [TestMethod]
+        public void TestGenericIEnumerable()
+        {
+            MyLinkedList<ClubMember> list = new MyLinkedList<ClubMember>();
+            list.Insert(p3); // p3
+            list.Insert(p22); // p3,p22
+            list.Insert(p9); // p9,p3,p22
+            list.Insert(p1); // p1,p9,p3,p22
+            list.Append(p24); // p1,p9,p3,p22,p24
+            list.Append(p5); // p5,p1,p9,p3,p22,p24
+            list.Append(p16); // p5,p1,p9,p3,p22,p24,p16
+
+            int i = 0;
+            foreach (ClubMember li in list)
+            {
+                Assert.AreEqual(list.ItemAt(i++), li);
+            }
+            Assert.AreEqual(list.Count, i);
+
+            int j = 0;
+            var e = list.GetEnumerator();
+            e.Reset();
+            while (e.MoveNext())
+            {
+                Assert.AreEqual(list.ItemAt(j++), e.Current);
+            }
+        }
     }
 }
