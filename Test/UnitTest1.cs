@@ -262,5 +262,64 @@ namespace Test
                 Assert.AreEqual(list.ItemAt(j++), e.Current);
             }
         }
+        [TestMethod]
+        public void TestClubMemberCompareTo()
+        {
+            ClubMember cm1, cm2, cm3, cm4;
+            cm1 = new ClubMember();
+            cm2 = new ClubMember();
+            cm3 = new ClubMember();
+            cm4 = new ClubMember();
+            cm1.FirstName = "A";
+            cm2.FirstName = "B";
+            cm3.FirstName = "C";
+            cm4.FirstName = "C";
+
+            Assert.IsTrue(cm1.CompareTo(cm2) < 0);
+            Assert.IsTrue(cm3.CompareTo(cm2) > 0);
+            Assert.IsTrue(cm2.CompareTo(cm3) < 0);
+            Assert.AreEqual(cm3.CompareTo(cm4), 0);
+        }
+        [TestMethod]
+        public void TestBubbleSortClubMember()
+        {
+            MyLinkedList<ClubMember> list = new MyLinkedList<ClubMember>();
+            list.Insert(p4);  // p4
+            list.Insert(p9);  // p9, p4
+            list.Insert(p5);  // p5, p9, p4
+            list.Insert(p19); // p19, p5, p9, p4
+            list.Insert(p23); // p23, p19, p5, p9, p4
+            list.Insert(p2);  // p2, p23, p19, p5, p9, p4
+
+            list.Sort(); // Sort on FirstName
+
+            Assert.AreEqual(p19, list.ItemAt(0));
+            Assert.AreEqual(p4, list.ItemAt(1));
+            Assert.AreEqual(p5, list.ItemAt(2));
+            Assert.AreEqual(p9, list.ItemAt(3));
+            Assert.AreEqual(p23, list.ItemAt(4));
+            Assert.AreEqual(p2, list.ItemAt(5));
+        }
+
+        [TestMethod]
+        public void TestBubbleSortInt()
+        {
+            MyLinkedList<int> list = new MyLinkedList<int>();
+            list.Insert(55);  // 55
+            list.Insert(78);  // 78, 55
+            list.Insert(23);  // 23, 78, 55
+            list.Insert(88);  // 88, 23, 78, 55
+            list.Insert(62);  // 62, 88, 23, 78, 55
+            list.Insert(49);  // 49, 62, 88, 23, 78, 55
+
+            list.Sort();
+
+            Assert.AreEqual(23, list.ItemAt(0));
+            Assert.AreEqual(49, list.ItemAt(1));
+            Assert.AreEqual(55, list.ItemAt(2));
+            Assert.AreEqual(62, list.ItemAt(3));
+            Assert.AreEqual(78, list.ItemAt(4));
+            Assert.AreEqual(88, list.ItemAt(5));
+        }
     }
 }

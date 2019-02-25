@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ADT
 {
-    public class MyLinkedList<T>: IEnumerable
+    public class MyLinkedList<T>: IEnumerable where T : IComparable
     {
         // Insert code from MyLinkedList here ... 
 
@@ -145,6 +145,32 @@ namespace ADT
         public IEnumerator GetEnumerator()
         {
             return new MyLinkedListEnumerator(head);
+        }
+
+        public void Sort()
+        {
+            Node node = head;
+            bool swapped = true;
+
+            while (swapped)
+            {
+                swapped = false;
+                node = head;
+                while (!swapped && node.Next != null)
+                {
+                    if (node.Next.Data.CompareTo(node.Data) == 1)
+                    {
+                        node = node.Next;
+                    }
+                    else
+                    {
+                        T temp = node.Data;
+                        node.Data = node.Next.Data;
+                        node.Next.Data = temp;
+                        swapped = true;
+                    }
+                }
+            }
         }
 
         private class MyLinkedListEnumerator : IEnumerator
