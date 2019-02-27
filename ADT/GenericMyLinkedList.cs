@@ -184,7 +184,31 @@ namespace ADT
                 {
                     if (pointer.Next != null)
                     {
-                        if ((pointer.Data).CompareTo(pointer.Next.Data) == 1)
+                        if ((pointer.Data).CompareTo(pointer.Next.Data) > 0)
+                        {
+                            T temp = pointer.Data;
+                            pointer.Data = pointer.Next.Data;
+                            pointer.Next.Data = temp;
+                        }
+                        pointer = pointer.Next;
+                    }
+                }
+            }
+        }
+
+        public void Sort(IComparer<T> ic)
+        {
+            int n = this.Count;
+            Node pointer;
+
+            for (int i = 0; i < n - 1; i++)
+            {
+                pointer = head;
+                for (int j = 0; j < n - i - 1; j++)
+                {
+                    if (pointer.Next != null)
+                    {
+                        if (ic.Compare(pointer.Data, pointer.Next.Data) == 1)
                         {
                             T temp = pointer.Data;
                             pointer.Data = pointer.Next.Data;

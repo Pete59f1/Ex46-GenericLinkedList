@@ -28,6 +28,25 @@ namespace Test
                 return first.LastName.CompareTo(second.LastName);
             }
         }
+        public class SortClubMembersAfterGenderAndLastName : IComparer<ClubMember>
+        {
+            public int Compare(ClubMember first, ClubMember second)
+            {
+                if (first.Gender == second.Gender)
+                {
+                    return first.LastName.CompareTo(second.LastName);
+                }
+                else if (first.Gender == Gender.Male)
+                {
+                    return -1;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
+
         public override string ToString()
         {
             return $"{Id}: {FirstName} {LastName} ({Gender}, {Age} years)";
