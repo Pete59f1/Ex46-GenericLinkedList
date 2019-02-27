@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ADT
 {
-    public class MyLinkedList<T>: IEnumerable where T : IComparable
+    public class MyLinkedList<T>: IEnumerable where T : IComparable<T>
     {
         // Insert code from MyLinkedList here ... 
 
