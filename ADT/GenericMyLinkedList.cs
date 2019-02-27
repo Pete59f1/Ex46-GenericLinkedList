@@ -182,7 +182,7 @@ namespace ADT
                 pointer = head;
                 for (int j = 0; j < n - i - 1; j++)
                 {
-                    if (pointer != null)
+                    if (pointer.Next != null)
                     {
                         if ((pointer.Data).CompareTo(pointer.Next.Data) == 1)
                         {

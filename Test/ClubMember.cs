@@ -17,8 +17,16 @@ namespace Test
 
         public int CompareTo(ClubMember obj)
         {
+            //Cast
             //ClubMember cm = (ClubMember)(obj);
             return this.FirstName.CompareTo(obj.FirstName);
+        }
+        public class SortClubMembersAfterLastName : IComparer<ClubMember>
+        {
+            public int Compare(ClubMember first, ClubMember second)
+            {
+                return first.LastName.CompareTo(second.LastName);
+            }
         }
         public override string ToString()
         {
