@@ -149,25 +149,48 @@ namespace ADT
 
         public void Sort()
         {
-            Node node = head;
-            bool swapped = true;
+                    //Ikke BubbleSort!
+            //Node node = head;
+            //bool swapped = true;
 
-            while (swapped)
+            //while (swapped)
+            //{
+            //    swapped = false;
+            //    node = head;
+            //    while (!swapped && node.Next != null)
+            //    {
+            //        if (node.Next.Data.CompareTo(node.Data) == 1)
+            //        {
+            //            node = node.Next;
+            //        }
+            //        else
+            //        {
+            //            T temp = node.Data;
+            //            node.Data = node.Next.Data;
+            //            node.Next.Data = temp;
+            //            swapped = true;
+            //        }
+            //    }
+            //}
+                    //Ikke BubbleSort
+
+            int n = this.Count;
+            Node pointer;
+
+            for (int i = 0; i < n - 1; i++)
             {
-                swapped = false;
-                node = head;
-                while (!swapped && node.Next != null)
+                pointer = head;
+                for (int j = 0; j < n - i - 1; j++)
                 {
-                    if (node.Next.Data.CompareTo(node.Data) == 1)
+                    if (pointer != null)
                     {
-                        node = node.Next;
-                    }
-                    else
-                    {
-                        T temp = node.Data;
-                        node.Data = node.Next.Data;
-                        node.Next.Data = temp;
-                        swapped = true;
+                        if ((pointer.Data).CompareTo(pointer.Next.Data) == 1)
+                        {
+                            T temp = pointer.Data;
+                            pointer.Data = pointer.Next.Data;
+                            pointer.Next.Data = temp;
+                        }
+                        pointer = pointer.Next;
                     }
                 }
             }
