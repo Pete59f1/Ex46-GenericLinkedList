@@ -9,8 +9,6 @@ namespace ADT
 {
     public class MyLinkedList<T>: IEnumerable where T : IComparable<T>
     {
-        // Insert code from MyLinkedList here ... 
-
         private class Node
         {
             public T Data { get; set; }
@@ -34,19 +32,10 @@ namespace ADT
             get { return ItemAt(Count - 1); }
         }
 
-        /// <summary>
-        /// The Insert(Object data, int index = 0) method inserts data as a node in the list
-        /// at the position indicated by index. 
-        /// The list is 0-indexed. 
-        /// Default value of index is 0.
-        /// If index is 0 or less, the data is inserted at the start of the list.
-        /// If index is equal to Count or higher, the data is inserted at the end of the list.
-        /// </summary>
         public void Insert(T data, int index = 0)
         {
             Node n = new Node(data);
-
-            // Adjust index, if necessary
+            
             if (index > Count)
                 index = Count;
 
@@ -69,24 +58,15 @@ namespace ADT
             Count++;
         }
 
-        /// <summary>
-        /// The Append(Object data) method appends data at the end of the list.
-        /// </summary>
         public void Append(T data)
         {
             Insert(data, Count);
         }
-
-        /// <summary>
-        /// The Delete(int index = 0) method deletes the node in the list at the position indicated by index. 
-        /// The list is 0-indexed. 
-        /// Default value of index is 0.
-        /// </summary>
+        
         public void Delete(int index = 0)
         {
             if (Count > 0)
             {
-                // Adjust index, if necessary
                 if (index > Count)
                     index = Count;
 
@@ -105,11 +85,7 @@ namespace ADT
                 Count--;
             }
         }
-
-        /// <summary>
-        /// The ItemAt(int index) method returns the data from the list at the position indicated by index. 
-        /// The list is 0-indexed. 
-        /// </summary>
+        
         public T ItemAt(int index)
         {
             T result = default(T);
@@ -124,11 +100,7 @@ namespace ADT
             }
             return result;
         }
-
-        /// <summary>
-        /// The ToString() method returns a string representation of the whole list by concatenating 
-        /// all the ToString()-values of each data object in the list.
-        /// </summary>
+        
         public override string ToString()
         {
             string result = "";
@@ -149,31 +121,6 @@ namespace ADT
 
         public void Sort()
         {
-                    //Ikke BubbleSort!
-            //Node node = head;
-            //bool swapped = true;
-
-            //while (swapped)
-            //{
-            //    swapped = false;
-            //    node = head;
-            //    while (!swapped && node.Next != null)
-            //    {
-            //        if (node.Next.Data.CompareTo(node.Data) == 1)
-            //        {
-            //            node = node.Next;
-            //        }
-            //        else
-            //        {
-            //            T temp = node.Data;
-            //            node.Data = node.Next.Data;
-            //            node.Next.Data = temp;
-            //            swapped = true;
-            //        }
-            //    }
-            //}
-                    //Ikke BubbleSort
-
             int n = this.Count;
             Node pointer;
 
